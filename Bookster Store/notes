@@ -1,0 +1,38 @@
+Infrastructure -> Application -> Domain
+
+OrderController -> OrderService -> Order
+                         \-------> OrderRepository (find, findAll, etc) <<i>>
+JpaOrderRepository --------------->/
+                    MailService<<i>>
+MailingMailService
+                   PaymentService
+
+
+Pakiet Utils - złe praktyki
+Clock, Money, Discount
+pl.example.bookster/
+               .clock/Clock
+               .money/Money
+               .discount/Discount
+
+<<i>> - interface
+
+----------------------------------------
+
+OrderController         Order
+                        CreateOrderRequest
+
+OrderService
+
+Order
+
+---------------------------------------
+
+Exception  /   RuntimeException
+(checked)
+OrderService.createOrder(...)
+
+CreateOrderResponse {
+                boolean access;
+                List<String> orders;
+}
